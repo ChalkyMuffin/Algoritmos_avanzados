@@ -2,6 +2,9 @@
 #include <string>
 using namespace std;
 //Algoritmo individual investigado
+
+
+//Adrian Cavazos Guerra - A00833841
 //4digitCodeBreaker
 //Complejidad: O(n!)
 
