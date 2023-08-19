@@ -1,8 +1,12 @@
 #include <iostream>
 using namespace std;
 
+
+//Funcion eficiente que busca un valor dentro de una lista ordenada
 int binarySearch(int arreglo[], int busca, int n){
+    //l = el principio del arreglo
     int l = 0;
+    //r = el final del arreglo
     int r = n-1;
 
     while (l <= r){
