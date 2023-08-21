@@ -17,11 +17,11 @@ void merge(int arr[], int l, int m, int r){
     auto *L = new int[s1];
     auto *R = new int[s2];
 
-    for (int i = 0; i < s1 - 1; i++){
+    for (int i = 0; i <= s1 -1; i++){
         L[i] = arr[l+i];
     }
 
-    for (int j = 0; j < s2 - 1; j++){
+    for (int j = 0; j <= s2 -1; j++){
         R[j] = arr[m + 1 + j];
     }
 
