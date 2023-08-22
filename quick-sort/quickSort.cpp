@@ -1,5 +1,6 @@
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 
 int partition(int arr[], int l, int r){
     int pivote = arr[r];
