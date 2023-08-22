@@ -15,14 +15,17 @@ int cuadrado(int a, int n) {
         return 1;
     }
     
-
     int medio_cuadrado = cuadrado(a, n / 2);
+    cout << "medio cuadrado = " << medio_cuadrado << endl;
     int result = medio_cuadrado * medio_cuadrado;
+    cout << "result = " << result << endl;
     
     //Si el numero es impar se multiplica el resultado una vez mas por a
     if (n % 2 == 1){
 
         result = result * a;
+        cout << "result * a = " << result << endl;
+
     }
     
     return result;
@@ -32,7 +35,8 @@ int main() {
     int a = 2;
     int n = 10;
         
-    cout << a << "^" << n << " = " << cuadrado(a, n) << endl;
+    //cout << a << "^" << n << " = " << cuadrado(a, n) << endl;
+    cout << cuadrado(a,n);
     
     return 0;
 }
