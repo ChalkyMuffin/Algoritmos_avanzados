@@ -1,16 +1,22 @@
 #include <iostream>
+using std::cout;
+using std::endl;
+
 
 //Complejidad O(log n)
 
-int power(int a, int n) {
-    if (n == 0)
+int cuadrado(int a, int n) {
+    //Todo a la 0 da 1
+    if (n == 0){
         return 1;
+    }
     
-    int half_pow = power(a, n / 2);
-    int result = half_pow * half_pow;
+    int medio_cuadrado = cuadrado(a, n / 2);
+    int result = medio_cuadrado * medio_cuadrado;
     
-    if (n % 2 == 1)
+    if (n % 2 == 1){
         result *= a;
+    }
     
     return result;
 }
@@ -19,9 +25,9 @@ int main() {
     int a = 2;
     int n = 10;
     
-    int result = power(a, n);
+    int result = cuadrado(a, n);
     
-    std::cout << a << "^" << n << " = " << result << std::endl;
+    cout << a << "^" << n << " = " << result << endl;
     
     return 0;
 }
