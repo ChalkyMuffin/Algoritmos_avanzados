@@ -6,26 +6,32 @@ using namespace std;
 //¿De cuantas formas diferentes se puede llegar hasta arriba? 
 //a = 1 por el caso de dar 1 salto
 //b = 2 por el caso de dar 2 saltos
-int stairs(int n, int a, int b){
+int coins(int C[], int n, int K){
     
     
-    if (n <= 0){
+    if (K == 0){
+        return 1;
+    }
+
+    else if(n <= 0 || K < 0){
         return 0;
     }
 
-    else if(n == 1 || n == 2){
-        return n;
-    }
-
     else{
-        return stairs(n-1, b, a+b);
+        return coins(C, n-1, K) + coins(C, n, K - C[n-1]);
     }
 
+}
+
+
+int coins_memo (int C[], int n, int K,  int T[]){
+    if (K == 0){
+        T[n,K] = 1;
+    }
 }
 
 int main ()
 {
 
-    cout << stairs(5, 1, 2);
     return 0;
 }
