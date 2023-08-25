@@ -36,6 +36,6 @@ int stairs(int n, int a, int b)
 int main()
 {
 
-    cout << stairs(4, 1, 2);
+    cout << stairs(5, 1, 2);
     return 0;
 }
