@@ -30,8 +30,8 @@ int main ()
     Rosa.value = 12;
     Rosa.weight = 5;
 
-    int valorFinal;
-    int pesoFinal;
+    int valorFinal = 0;
+    int pesoFinal = 0;
     Gem gemas[4] = {Verde, Azul, Rojo, Rosa};
     int n = 4;
     vector<Gem> gemasObtenidas;
@@ -39,11 +39,27 @@ int main ()
     for (int i = 0; i < n; i++){
         gemasObtenidas.push_back(gemas[i]);
 
+        valorFinal += gemas[i].value;
+        pesoFinal += gemas[i].weight;
+
+        if (pesoFinal > 10 && gemas[i-1].value < gemas[i].value && pesoFinal - gemas[i-1].weight <= 10){    
+            gemasObtenidas.pop_back();
+            gemasObtenidas.pop_back();
+            gemasObtenidas.push_back(gemas[i]);
+
+            valorFinal -= gemas[i-1].value;
+            pesoFinal -= gemas[i-1].weight;
+
+        }
+
     }
 
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < gemasObtenidas.size(); i++){
         cout << gemasObtenidas[i].Name << endl;
     }
+        cout << "Valor: " << valorFinal << " Peso: " << pesoFinal << endl;
+
+        return 0;
 
 
 
