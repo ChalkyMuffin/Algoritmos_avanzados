@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
-using namespace std;
+using std::endl;
+using std::string;
+using std::cout;
+using std::vector;
+
 
 //Knapsack problem
 //Tienes un bolso y puedes cargar maximo W = 10
