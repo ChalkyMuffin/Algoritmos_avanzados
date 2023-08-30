@@ -19,9 +19,12 @@ class Gem {
     int weight;
 };
 
+//Complejidad O(n)
 //Funcion que usa la tecnica greedy para resolver Knapsack, pide un arreglo con cada una de las gemas que hay disponibles, estas gemas tienen su propio valor y peso unicos, se hace un loop en el que se colecta cada gema y se suma el valorFinal y pesoFinal, si el pesoFinal sobrepasa el limite de 10, se checa si la gema anterior vale menos que la siguiente y si ese es el caso checa si al desechar la anterior podria cargar la nueva
 //Input: Arreglo con las gemas disponibles y el tamaño de este arreglo
 //Regresa: El nombre de las gemas en la bolsa, el valor final y el peso final
+//La funcion es greedy porque busca una mejora inmediata en la primera oportunidad que pueda venir, en este caso cambiando una gema de menor valor por una de mayor
+//El caso en el que no llega al optimo con este metodo especifico es cuando haya una mejor gema que reemplazar directamente antes de la que hace que llegue a sobrepeso
 void Knapsack(Gem gemas[], int n){
 
         //Vector para guardar las gemas y desecharlas si es necesario
