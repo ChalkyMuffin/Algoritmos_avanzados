@@ -17,7 +17,7 @@ int F(int i, int j) {
 
     //Si el punto en la matriz es caminable
     if (i >= 0 && j >= 0) {
-        cout << "a[" << i << "][" << j << "]: " << C[i][j] << endl;
+        //cout << "a[" << i << "][" << j << "]: " << C[i][j] << endl;
 
         //Funciona porque el max detecta por defecto a la primera recursion (F(i-1,j)) como mayor lo que hace que tome en cuenta F(i,j-1) haciendo que vaya solo a la derecha, en el momento que llegue a un punto del que no puede avanzar procede al F(i-1,j) lo que hace que baje y en el momento que baja hasta mas no poder se regresa a un punto a la derecha de donde bajo anteriormente porque el otro condicional hace que regrese a ese estado anterior y asi se repite mientras todo este tiempo se estan sumando las veces que se encuentra una moneda en el camino qeu se reinicia cada vez que llega a un -1 y regresa la fucion la mayor suma que logro encontrar
         return max(F(i - 1, j), F(i, j - 1)) + C[i][j];
@@ -26,7 +26,7 @@ int F(int i, int j) {
 
     //Si el punto no es caminable
     else if (i < 0 || j < 0) {
-        cout << "a[" << i << "][" << j << "]: " << endl;
+        //cout << "a[" << i << "][" << j << "]: " << endl;
         return 0;
     }
     return 0;
@@ -38,7 +38,7 @@ int main ()
      for (int i = 0; i < 5; i++) {
 
         for (int j = 0; j < 5; j++) {
-            cout << "a[" << i << "][" << j << "]: ";
+            //cout << "a[" << i << "][" << j << "]: ";
 
             cout << C[i][j] << " " ;
         }

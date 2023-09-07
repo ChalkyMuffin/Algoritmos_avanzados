@@ -43,7 +43,7 @@ bool Sobrevive(int tablero[n][n], int fila, int col) {
 bool nQueens(int tablero[n][n], int col) {
 
     //Caso base, todas las reinas se han colocado
-    if (col >= n) {
+    if (col == n) {
         return true; 
     }
 
