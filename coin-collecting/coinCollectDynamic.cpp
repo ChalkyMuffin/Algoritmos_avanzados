@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-//Funcion que examina toda la matriz para analizar las posibilidades del mejor caso para obtener la mayor cantidad de monedas solo pudiendo moverse abajo y a la derecha, o arriba y a la derecha de la perspectiva del robot
+//Funcion que examina toda la matriz para analizar las posibilidades del mejor caso para obtener la mayor cantidad de monedas solo pudiendo moverse abajo y a la derecha
 //Input: La matriz de las monedas
 //Regresa: La mayor cantidad de monedas que se pueden conseguir en una sola ida
 int F(int C[n][n]) {
@@ -18,19 +18,19 @@ int F(int C[n][n]) {
     dynamic[0][0] = C[0][0];
 
 
-// Inicializar la primera columna: acumular monedas hacia abajo
+//Inicializa la primera columna en sentido vertical
     for (int i = 0; i < n; ++i) {
         dynamic[i][0] += C[i][0];
 
     }
     
-    // Inicializar la primera fila: acumular monedas hacia la derecha
+    //Inicializa la primera fila en sentido horizontal
     for (int j = 0; j < n; ++j) {
         dynamic[0][j] += C[0][j];
 
     }
     
-    // Llenar la tabla dynamic utilizando la relación de recurrencia
+    //Llenar la matriz de dynamic utilizando la relación de recurrencia con la matriz C
     for (int i = 1; i < n; ++i) {
         for (int j = 1; j < n; ++j) {
             // Valor máximo acumulado considerando las dos direcciones posibles
@@ -59,7 +59,6 @@ int C[5][5]={{0, 0, 0, 0, 1}, {0, 1, 0, 1, 0}, {0, 0, 0, 1, 0}, {0, 0, 1, 0, 0},
         cout << endl;
      }
 
-    //[4,4] es la posicion inicial
     cout << F(C);
     cout << " = Monedas maximas posibles de una sola vuelta"<< endl;
 
