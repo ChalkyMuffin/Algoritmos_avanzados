@@ -5,46 +5,47 @@ using namespace std;
 //Complejidad: O(n^2)
 
 
-//Se crea la matriz que simula el camino representando los espacion vacios con 0 y los espacios con monedas con 1
-//La matriz es la misma que la del problema pero volteada 180 grados para adaptarlo correctamente a la funcion
-//int C[5][5]={{1, 0, 0, 0, 1}, {0, 0, 1, 0, 0}, {0, 1, 0, 0, 0}, {0, 1, 0, 1, 0}, {1, 0, 0, 0, 0}};
+
 
 
 //Funcion que examina toda la matriz para analizar las posibilidades del mejor caso para obtener la mayor cantidad de monedas solo pudiendo moverse abajo y a la derecha, o arriba y a la derecha de la perspectiva del robot
-//[i, j] es la posicion en la que inicia
-//Input: Coordenadas de posicion inicial i y j
+//Input: La matriz de las monedas
 //Regresa: La mayor cantidad de monedas que se pueden conseguir en una sola ida
 int F(int C[n][n]) {
 
-    vector<vector<int>> dinamM(n, vector<int>(n, 0));
+    //Vector de matriz para las subsoluciones
+    vector<vector<int>> dynamic(n, vector<int>(n, 0));
+    dynamic[0][0] = C[0][0];
 
-    dinamM[0][0] = C[0][0];
 
+// Inicializar la primera columna: acumular monedas hacia abajo
+    for (int i = 0; i < n; ++i) {
+        dynamic[i][0] += C[i][0];
 
-// Inicializar la primera numna: acumular monedas hacia abajo
-    for (int i = 1; i < n; ++i) {
-        dinamM[i][0] = dinamM[i-1][0] + C[i][0];
     }
     
     // Inicializar la primera fila: acumular monedas hacia la derecha
-    for (int j = 1; j < n; ++j) {
-        dinamM[0][j] = dinamM[0][j-1] + C[0][j];
+    for (int j = 0; j < n; ++j) {
+        dynamic[0][j] += C[0][j];
+
     }
     
-    // Llenar la tabla dinamM utilizando la relación de recurrencia
+    // Llenar la tabla dynamic utilizando la relación de recurrencia
     for (int i = 1; i < n; ++i) {
         for (int j = 1; j < n; ++j) {
             // Valor máximo acumulado considerando las dos direcciones posibles
-            dinamM[i][j] = max(dinamM[i-1][j], dinamM[i][j-1]) + C[i][j];
+            dynamic[i][j] = max(dynamic[i-1][j], dynamic[i][j-1]) + C[i][j];
         }
     }
     
-    // El valor en la esquina inferior derecha contiene la solución al problema
-    return dinamM[n-1][n-1];
+    // En [n-1][n-1] que en este caso es [4][4] ya habra acabado el recorrido por lo que en esa posicion le pedimos retornar su valor obtenido
+    return dynamic[n-1][n-1];
 }
 
 int main ()
 {
+
+//Se crea la matriz que simula el camino representando los espacion vacios con 0 y los espacios con monedas con 1
 int C[5][5]={{0, 0, 0, 0, 1}, {0, 1, 0, 1, 0}, {0, 0, 0, 1, 0}, {0, 0, 1, 0, 0}, {1, 0, 0, 0, 1}};
 
     //Muestra la matriz de una forma parecida a el camino de la imagen del problema
@@ -60,7 +61,7 @@ int C[5][5]={{0, 0, 0, 0, 1}, {0, 1, 0, 1, 0}, {0, 0, 0, 1, 0}, {0, 0, 1, 0, 0},
 
     //[4,4] es la posicion inicial
     cout << F(C);
-    cout << " = Monedas maximas posibles"<< endl;
+    cout << " = Monedas maximas posibles de una sola vuelta"<< endl;
 
     return 0;
 }
