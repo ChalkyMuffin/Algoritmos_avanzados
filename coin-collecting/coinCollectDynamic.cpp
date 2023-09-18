@@ -34,11 +34,15 @@ int F(int C[n][n]) {
     for (int i = 1; i < n; ++i) {
         for (int j = 1; j < n; ++j) {
             // Valor máximo acumulado considerando las dos direcciones posibles
+            cout <<"dynamic[i-1][j] " << dynamic[i-1][j] << endl;
+            cout << "dynamic[i][j-1] " << dynamic[i][j-1] << endl;
             dynamic[i][j] = max(dynamic[i-1][j], dynamic[i][j-1]) + C[i][j];
+            cout <<"Escogio " << max(dynamic[i-1][j], dynamic[i][j-1]) << endl;
         }
     }
     
     // En [n-1][n-1] que en este caso es [4][4] ya habra acabado el recorrido por lo que en esa posicion le pedimos retornar su valor obtenido
+    
     return dynamic[n-1][n-1];
 }
 

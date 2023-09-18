@@ -1,7 +1,9 @@
-if(j == 0){
-        //    dynamic[0][j] += C[0][j];
-        //    //cout << dynamic[0][j] << endl;
+ for (int i = 0; i < 5; i++) {
 
-        //    continue;
-        //}
-        //dynamic[0][j] = dynamic[0][j-1] + C[0][j];
+    //    for (int j = 0; j < 5; j++) {
+    //        //cout << "a[" << i << "][" << j << "]: ";
+
+    //        cout << C[i][j] << " " ;
+    //    }
+    //    cout << endl;
+    // }
