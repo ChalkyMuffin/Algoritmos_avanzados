@@ -7,9 +7,12 @@ using namespace std;
 void strMatch(const string &patron, string &busqueda)
 {
     int n = patron.size();
+        int iteraciones = 0;
+
 
     for (int i = 0; i <= n; i++)
     {
+        iteraciones++;
         if (patron[i] == busqueda[0])
         {
             string checa;
@@ -18,6 +21,7 @@ void strMatch(const string &patron, string &busqueda)
 
             for (int j = 0; j <= n - i; j++)
             {
+                iteraciones++;
 
                 checador += patron[i + j];
                 // cout << checador;
@@ -27,15 +31,14 @@ void strMatch(const string &patron, string &busqueda)
 
                 if (checa == busqueda)
                 {
-                    cout << "Se ha encontrado " <<checa << " del indice: " << i << " al " << i+j;
+                    cout << "Se ha encontrado " <<checa << " del indice: " << i << " al " << i+j << " con " << iteraciones << " iteraciones";
                     break;
                 }
             }
             // cout << busqueda.size();
             //cout << "********" << endl;
             //cout << checa;
-            continue;
-            ;
+            
         }
         // cout << i << ' ';
     }
@@ -43,8 +46,11 @@ void strMatch(const string &patron, string &busqueda)
 
 int main()
 {
-    string patron = "This is a small example";
-    string busqueda = "small example";
+    //string patron = "effable_effanineffable";
+    string patron = "this_is_a_small_example";
+    string busqueda = "small_example";
+
+    //string busqueda = "effanineffable";
     // cout << patron[3];
 
     strMatch(patron, busqueda);
