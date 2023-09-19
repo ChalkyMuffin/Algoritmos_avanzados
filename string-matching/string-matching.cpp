@@ -47,8 +47,8 @@ void strMatch(const string &patron, string &busqueda)
 int main()
 {
     //string patron = "effable_effanineffable";
-    string patron = "this_is_a_small_example";
-    string busqueda = "small_example";
+    string busqueda = "effable_effanineffable";
+    string patron = "effanineffable";
 
     //string busqueda = "effanineffable";
     // cout << patron[3];
