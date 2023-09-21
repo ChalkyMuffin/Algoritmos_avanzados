@@ -1,11 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 string manacher(string s) {
-    // Transformar la cadena para lidiar con palíndromos de longitud impar
+    // Transformar el string para lidiar con palindromos de longitud impar
     string t = "#";
     for (char c : s) {
         t += c;
@@ -13,21 +12,28 @@ string manacher(string s) {
     }
 
     int n = t.length();
-    vector<int> P(n, 0);  // Arreglo de longitud de palíndromo
+    vector<int> P(n, 0);  // Arreglo de longitud de palindromo
 
-    int C = 0;  // Centro del palíndromo más largo encontrado hasta ahora
-    int R = 0;  // Derecha del palíndromo más largo encontrado hasta ahora
+    // centro del palindromo mas largo encontrado hasta ahora
+    int cen = 0;  
+    // Derecha del palindromo mas largo encontrado hasta ahora
+    int R = 0;  
 
     for (int i = 0; i < n; i++) {
-        // Si i está dentro del palíndromo más largo conocido, podemos aprovechar la simetría
+        // Si i esta dentro del palindromo mas largo conocido, podemos aprovechar la simetria
         if (i < R) {
-            int mirror_i = 2 * C - i;  // Espejo de i con respecto al centro
-            P[i] = min(R - i, P[mirror_i]);  // Extender basado en la simetría
+            // Espejo de i con respecto al centro
+            int mirror_i = 2 * cen - i;  
+            // Extender basado en la simetria
+            P[i] = min(R - i, P[mirror_i]);  
         }
 
-        // Intentar extender el palíndromo en la posición actual
-        int a = i + (1 + P[i]);  // Extender a la derecha
-        int b = i - (1 + P[i]);  // Extender a la izquierda
+        // Intentar extender el palindromo en la posición actual
+        // Extender a la derecha
+        int a = i + (1 + P[i]);
+
+        // Extender a la izquierda  
+        int b = i - (1 + P[i]);  
 
         while (a < n && b >= 0 && t[a] == t[b]) {
             P[i]++;
@@ -35,9 +41,9 @@ string manacher(string s) {
             b--;
         }
 
-        // Si se extiende más allá de R, actualizamos el centro y la derecha del palíndromo conocido
+        // Si se extiende mas alla de R, actualizamos el centro y la derecha del palindromo conocido
         if (i + P[i] > R) {
-            C = i;
+            cen = i;
             R = i + P[i];
         }
     }
@@ -52,14 +58,15 @@ string manacher(string s) {
         }
     }
 
-    // Construir y devolver el palíndromo más largo
-    int start = (center_index - max_len) / 2;  // Índice de inicio en la cadena original
+    // Construir y devolver el palindromo mas largo
+    // Indice de inicio en la string original
+    int start = (center_index - max_len) / 2;  
     return s.substr(start, max_len);
 }
 
 int main() {
     string s = "babad";
-    string longest_palindrome = manacher(s);
-    cout << "El palindromo más largo es: " << longest_palindrome << endl;
+    string longest_pal = manacher(s);
+    cout << "El palindromo mas largo es: " << longest_pal << endl;
     return 0;
 }
