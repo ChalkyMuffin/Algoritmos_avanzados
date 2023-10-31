@@ -3,16 +3,28 @@
 #include <vector>
 using namespace std;
 
+
+//Complejidad O(n)
+
+// Funcion que encuentra el palindromo mas largo de un string dado
+// Input: string al que buscar palindromo mas largo
+// Regresa: La parte del string con el palindromo mas largo
 string manacher(string s) {
-    // Transformar el string para lidiar con palindromos de longitud impar
-    string t = "#";
+
+    // Paso 1: Transformar el string original para lidiar con palindromos de longitud impar
+    //String que hara los #
+    string t = "#"; 
     for (char c : s) {
+        // Agregar un caracter del string original
         t += c;
-        t += '#';
+        // Agregar '#' después de cada caracter original      
+        t += '#';     
     }
 
     int n = t.length();
-    vector<int> P(n, 0);  // Arreglo de longitud de palindromo
+
+    // Vector de longitud de palindromo
+    vector<int> P(n, 0);  
 
     // centro del palindromo mas largo encontrado hasta ahora
     int cen = 0;  
@@ -20,10 +32,13 @@ string manacher(string s) {
     int R = 0;  
 
     for (int i = 0; i < n; i++) {
+
         // Si i esta dentro del palindromo mas largo conocido, podemos aprovechar la simetria
         if (i < R) {
+
             // Espejo de i con respecto al centro
             int mirror_i = 2 * cen - i;  
+
             // Extender basado en la simetria
             P[i] = min(R - i, P[mirror_i]);  
         }
