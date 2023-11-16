@@ -109,9 +109,10 @@ def draw_hull( puntos, elegidos, start ):
 
 def main():
     #Toma los puntos dados en el archivo 'puntos-n8.txt'
-    with open('puntos-n8.txt', 'r') as file:
+    with open('puntos-n100.txt', 'r') as file:
         lines = file.readlines()
-    
+        
+    #Empieza en la segunda linea asi evitando que la primera linea que incluye el numero de puntos interfiera con el calculo
     point_lines = lines[1:]
     
     points = []
